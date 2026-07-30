@@ -1,13 +1,27 @@
 DJANGO CLOC MINI-SITE
 
 Files:
-  index.html       Main one-page site
+  index.php        Main one-page site (includes UTM tracking)
   about.html       Short explanation of the CLOC model
+  utm-live.php     UTM tracker + live results page
+  utm.sqlite       SQLite data file (created automatically on first UTM hit)
   styles.css       Layout and styling
   script.js        Click-to-open image modal
   assets/          Hero image
 
 Upload the contents of this folder to the web root for django.dr-chuck.com.
+PHP with the SQLite3 extension is required for UTM tracking.
+
+UTM TRACKING
+  Home page visits that include standard utm_* query parameters are recorded.
+  Example:
+    https://django.dr-chuck.com/index.php?utm_source=email&utm_medium=newsletter&utm_campaign=fall
+
+  View live counts:
+    https://django.dr-chuck.com/utm-live.php
+
+  Storage columns: utm_string, count, first_use, last_use (UTC).
+  Cap: 250 distinct UTM strings. Extra rows are deleted by oldest last_use.
 
 IMPORTANT LINK CHECK
 On both pages:
