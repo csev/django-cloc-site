@@ -10,20 +10,18 @@ Files:
 Upload the contents of this folder to the web root for django.dr-chuck.com.
 
 IMPORTANT LINK CHECK
-Registration links to:
-  https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django
+On both pages:
+  Register:
+    https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django
+  Course dashboard:
+    https://si-ali.catalog.instructure.com/dashboard/in-progress
 
-Financial aid links to:
-  https://forms.gle/uVtEWywveacTEUz96
+On about.html only:
+  Financial aid:
+    https://forms.gle/uVtEWywveacTEUz96
+  Master Programmer Curriculum:
+    https://www.masterprogrammer.com
 
-Course dashboard links to:
-  https://si-ali.catalog.instructure.com/dashboard/in-progress
-
-Master Programmer Curriculum links to:
-  https://www.masterprogrammer.com
-
-External links open in a new tab. Edit those href values in:
-  index.html
-  about.html
+External links open in a new tab.
 
 No libraries, frameworks, or build step are required.
