@@ -2,3 +2,6 @@ utm.sqlite
 utm.sqlite-journal
 utm.sqlite-wal
 utm.sqlite-shm
+utm-password.php
+*.swp
+.DS_Store

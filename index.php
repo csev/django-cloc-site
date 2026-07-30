@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Building Web Applications in Django — a Campus-Linked Open Course with Dr. Chuck.">
   <title>Building Web Applications in Django — CLOC</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>

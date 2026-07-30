@@ -5,9 +5,17 @@
  *   - open this URL directly → live results table
  *
  * Storage: SQLite file (utm.sqlite) beside this script. No server DB required.
+ *
+ * Optional password for viewing results (tracking itself is never passworded):
+ *   Create a sibling file named utm-password.php containing only:
+ *     <?php return 'your-secret-here';
+ *   While that file exists, utm-live.php asks for the password before
+ *   showing the table. Delete the file to leave viewing wide open again.
+ *   Do not commit utm-password.php.
  */
 
 define('UTM_DB_FILE', __DIR__ . '/utm.sqlite');
+define('UTM_PASSWORD_FILE', __DIR__ . '/utm-password.php');
 define('UTM_MAX_CODES', 250);
 
 function utm_db() {
@@ -118,7 +126,73 @@ function utm_h($value) {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+function utm_expected_password() {
+    if (!is_readable(UTM_PASSWORD_FILE)) {
+        return null;
+    }
+    $password = include UTM_PASSWORD_FILE;
+    if (!is_string($password)) {
+        return null;
+    }
+    $password = trim($password);
+    return $password === '' ? null : $password;
+}
+
+function utm_require_password() {
+    $expected = utm_expected_password();
+    if ($expected === null) {
+        return true;
+    }
+
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+
+    if (!empty($_SESSION['utm_live_ok'])) {
+        return true;
+    }
+
+    $error = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $got = isset($_POST['password']) ? (string) $_POST['password'] : '';
+        if (hash_equals($expected, $got)) {
+            $_SESSION['utm_live_ok'] = true;
+            header('Location: ' . strtok($_SERVER['REQUEST_URI'], '?'));
+            exit;
+        }
+        $error = 'Wrong password.';
+    }
+
+    header('Content-Type: text/html; charset=utf-8');
+    header('Cache-Control: no-store');
+    ?>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>UTM Live</title>
+</head>
+<body>
+  <p><a href="./">Home</a></p>
+  <h1>UTM Live</h1>
+  <?php if ($error !== ''): ?>
+    <p><?php echo utm_h($error); ?></p>
+  <?php endif; ?>
+  <form method="post" action="">
+    <label>Password <input type="password" name="password" autofocus></label>
+    <button type="submit">View</button>
+  </form>
+</body>
+</html>
+    <?php
+    exit;
+}
+
 function utm_show_dashboard() {
+    utm_require_password();
+
     $db = utm_db();
     $total_codes = (int) $db->querySingle('SELECT COUNT(*) FROM utm');
     $total_hits = (int) $db->querySingle('SELECT COALESCE(SUM(count), 0) FROM utm');
