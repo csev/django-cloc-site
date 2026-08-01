@@ -35,6 +35,7 @@
       <li><a href="https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django" target="_blank" rel="noopener noreferrer">Register for the course</a></li>
       <li><a href="about.html">Read how the CLOC works</a></li>
       <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article on the CLOC</a></li>
+      <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
       <li><a href="https://si-ali.catalog.instructure.com/dashboard/in-progress" target="_blank" rel="noopener noreferrer">Enrolled Students: Course Dashboard</a></li>
     </ul>
 

@@ -33,6 +33,8 @@ On both pages:
 On both pages:
   LinkedIn article:
     https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/
+  YouTube video:
+    https://www.youtube.com/watch?v=vaEBaRATTt8
 
 On about.html only:
   Financial aid:
