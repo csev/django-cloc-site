@@ -17,6 +17,7 @@
 define('UTM_DB_FILE', __DIR__ . '/utm.sqlite');
 define('UTM_PASSWORD_FILE', __DIR__ . '/utm-password.php');
 define('UTM_MAX_CODES', 250);
+define('UTM_NONE', '(none)');
 
 function utm_db() {
     static $db = null;
@@ -66,7 +67,12 @@ function utm_normalize_string(array $params) {
 }
 
 function utm_prune(SQLite3 $db) {
-    $count = (int) $db->querySingle('SELECT COUNT(*) FROM utm');
+    // Cap applies to real UTM codes only; the (none) counter is never pruned.
+    $stmt = $db->prepare(
+        'SELECT COUNT(*) FROM utm WHERE utm_string != :none'
+    );
+    $stmt->bindValue(':none', UTM_NONE, SQLITE3_TEXT);
+    $count = (int) $stmt->execute()->fetchArray(SQLITE3_NUM)[0];
     if ($count <= UTM_MAX_CODES) {
         return;
     }
@@ -75,10 +81,12 @@ function utm_prune(SQLite3 $db) {
     $stmt = $db->prepare(
         'DELETE FROM utm WHERE utm_string IN (
             SELECT utm_string FROM utm
+            WHERE utm_string != :none
             ORDER BY last_use ASC, utm_string ASC
             LIMIT :limit
         )'
     );
+    $stmt->bindValue(':none', UTM_NONE, SQLITE3_TEXT);
     $stmt->bindValue(':limit', $extra, SQLITE3_INTEGER);
     $stmt->execute();
 }
@@ -86,7 +94,7 @@ function utm_prune(SQLite3 $db) {
 function utm_track() {
     $utm = utm_normalize_string($_GET);
     if ($utm === '') {
-        return;
+        $utm = UTM_NONE;
     }
 
     $now = gmdate('Y-m-d H:i:s');
@@ -113,7 +121,9 @@ function utm_track() {
             $ins->bindValue(':utm', $utm, SQLITE3_TEXT);
             $ins->bindValue(':now', $now, SQLITE3_TEXT);
             $ins->execute();
-            utm_prune($db);
+            if ($utm !== UTM_NONE) {
+                utm_prune($db);
+            }
         }
 
         $db->exec('COMMIT');
@@ -194,13 +204,27 @@ function utm_show_dashboard() {
     utm_require_password();
 
     $db = utm_db();
-    $total_codes = (int) $db->querySingle('SELECT COUNT(*) FROM utm');
+    $stmt = $db->prepare(
+        'SELECT COUNT(*) FROM utm WHERE utm_string != :none'
+    );
+    $stmt->bindValue(':none', UTM_NONE, SQLITE3_TEXT);
+    $total_codes = (int) $stmt->execute()->fetchArray(SQLITE3_NUM)[0];
     $total_hits = (int) $db->querySingle('SELECT COALESCE(SUM(count), 0) FROM utm');
-    $result = $db->query(
+    $stmt = $db->prepare(
+        'SELECT count FROM utm WHERE utm_string = :none'
+    );
+    $stmt->bindValue(':none', UTM_NONE, SQLITE3_TEXT);
+    $none_row = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+    $none_hits = $none_row ? (int) $none_row['count'] : 0;
+    $stmt = $db->prepare(
         'SELECT utm_string, count, first_use, last_use
          FROM utm
-         ORDER BY last_use DESC, count DESC'
+         ORDER BY CASE WHEN utm_string = :none THEN 0 ELSE 1 END,
+                  last_use DESC, count DESC'
     );
+    $stmt->bindValue(':none', UTM_NONE, SQLITE3_TEXT);
+    $result = $stmt->execute();
+    $row_count = (int) $db->querySingle('SELECT COUNT(*) FROM utm');
 
     header('Content-Type: text/html; charset=utf-8');
     header('Cache-Control: no-store');
@@ -218,12 +242,13 @@ function utm_show_dashboard() {
   <h1>UTM Live</h1>
   <p>
     <?php echo (int) $total_codes; ?> / <?php echo (int) UTM_MAX_CODES; ?> codes,
-    <?php echo (int) $total_hits; ?> hits. Times UTC.
-    Cap drops oldest last_use.
+    <?php echo (int) $total_hits; ?> hits
+    (<?php echo (int) $none_hits; ?> with no UTM).
+    Times UTC. Cap drops oldest last_use; (none) is never pruned.
   </p>
 
-  <?php if ($total_codes === 0): ?>
-    <p>No UTM visits yet.</p>
+  <?php if ($row_count === 0): ?>
+    <p>No visits yet.</p>
   <?php else: ?>
     <table border="1" cellpadding="4" cellspacing="0">
       <tr>
