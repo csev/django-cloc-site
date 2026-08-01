@@ -30,6 +30,10 @@ On both pages:
   Course dashboard:
     https://si-ali.catalog.instructure.com/dashboard/in-progress
 
+On both pages:
+  LinkedIn article:
+    https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/
+
 On about.html only:
   Financial aid:
     https://forms.gle/uVtEWywveacTEUz96
