@@ -33,10 +33,10 @@
 
     <ul class="actions" aria-label="Course links">
       <li><a href="https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django" target="_blank" rel="noopener noreferrer">Register for the course</a></li>
-      <li><a href="about.html">About this Course</a></li>
       <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article on the CLOC</a></li>
       <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
       <li><a href="https://si-ali.catalog.instructure.com/dashboard/in-progress" target="_blank" rel="noopener noreferrer">Enrolled Students: Course Dashboard</a></li>
+      <li><a href="about.html">About this Course</a></li>
     </ul>
 
     <p>This is a practical Django course with readings, videos, exercises, assignments, weekly communication, and live help. There are no university grades or credit, and you can keep working after the campus semester ends. The idea is simple: give online learners more rhythm, more connection, and a better chance to keep moving.</p>
