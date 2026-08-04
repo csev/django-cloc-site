@@ -46,8 +46,12 @@ function utm_normalize_string(array $params) {
         $lower[strtolower((string) $name)] = $value;
     }
 
-    // Bare ?utm=qr is allowed, plus the usual utm_* pair params.
-    $keys = array('utm', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content');
+    // Bare ?utm=qr is an alias for utm_source (matches GA after the page-side rewrite).
+    if (isset($lower['utm']) && !isset($lower['utm_source'])) {
+        $lower['utm_source'] = $lower['utm'];
+    }
+
+    $keys = array('utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content');
     $parts = array();
     foreach ($keys as $key) {
         if (!isset($lower[$key])) {

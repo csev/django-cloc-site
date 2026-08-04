@@ -8,6 +8,15 @@
   <title>Building Web Applications in Django — CLOC</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var url = new URL(window.location.href);
+      if (url.searchParams.has('utm') && !url.searchParams.has('utm_source')) {
+        url.searchParams.set('utm_source', url.searchParams.get('utm'));
+        window.history.replaceState({}, '', url);
+      }
+    })();
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMHFYWME8L"></script>
   <script>
