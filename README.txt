@@ -34,7 +34,9 @@ On both pages:
   LinkedIn article:
     https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/
   YouTube video:
-    https://www.youtube.com/watch?v=vaEBaRATTt8
+    https://www.youtube.com/watch?v=vaEBaRATTt8&list=PLQqtpRlfsBek&index=2
+  First week welcome video:
+    https://www.youtube.com/watch?v=0lUAYNDl-mM&list=PLQqtpRlfsBek&index=1
 
 On about.html only:
   Financial aid:

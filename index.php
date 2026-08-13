@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Building Web Applications in Django — a Campus-Linked Open Course with Dr. Chuck.">
-  <title>Building Web Applications in Django — CLOC</title>
+  <title>Building Web Applications in Django — CLOC-357</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <script>
@@ -29,7 +29,7 @@
 <body>
   <header>
     <div class="header-inner">
-      <h1>Building Web Applications in Django</h1>
+      <h1>Building Web Applications in Django - CLOC-357</h1>
       <p>A Campus-Linked Open Course</p>
     </div>
   </header>
@@ -46,12 +46,13 @@
 
     <h2>Learn Django with a little more structure and support</h2>
 
-    <p>Hi, I’m Dr. Chuck. I built this course for people who like the flexibility of online learning but do not want to feel completely on their own. You can work from anywhere, follow the course calendar, and get help from the instructional team while the University of Michigan campus course is running.</p>
+    <p>Hi, I’m Dr. Chuck. I built this non-credit, online section of my course for people who like the flexibility of online learning but do not want to feel completely on their own. You can work from anywhere, follow the course calendar, and get help from the instructional team while the University of Michigan campus course is running.</p>
 
     <ul class="actions" aria-label="Course links">
       <li><a href="https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django" target="_blank" rel="noopener noreferrer">Register for the course</a></li>
       <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article on the CLOC</a></li>
-      <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
+      <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8&amp;list=PLQqtpRlfsBek&amp;index=2" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
+      <li><a href="https://www.youtube.com/watch?v=0lUAYNDl-mM&amp;list=PLQqtpRlfsBek&amp;index=1" target="_blank" rel="noopener noreferrer">Watch the first week welcome video</a></li>
       <li><a href="https://si-ali.catalog.instructure.com/dashboard/in-progress" target="_blank" rel="noopener noreferrer">Enrolled Students: Course Dashboard</a></li>
       <li><a href="about.html">About this Course</a></li>
     </ul>
