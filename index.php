@@ -49,7 +49,10 @@
     <p>Hi, I’m Dr. Chuck. I built this non-credit, online section of my course for people who like the flexibility of online learning but do not want to feel completely on their own. You can work from anywhere, follow the course calendar, and get help from the instructional team while the University of Michigan campus course is running.</p>
 
     <ul class="actions" aria-label="Course links">
+      <li>Registration for Fall 2026 is now Closed</li>
+<!--
       <li><a href="https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django" target="_blank" rel="noopener noreferrer">Register for the course (registration closes October 1st)</a></li>
+-->
       <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article on the CLOC</a></li>
       <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8&amp;list=PLQqtpRlfsBek&amp;index=2" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
       <li><a href="https://www.youtube.com/watch?v=0lUAYNDl-mM&amp;list=PLQqtpRlfsBek&amp;index=1" target="_blank" rel="noopener noreferrer">Watch the first week welcome video</a></li>
