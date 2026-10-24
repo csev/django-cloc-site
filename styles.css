@@ -1,6 +1,7 @@
 :root {
   --blue: #00274c;
   --blue-deep: #001a33;
+  --django-green: #0a4b33;
   --maize: #ffcb05;
   --ink: #18212b;
   --muted: #5b6673;
@@ -21,7 +22,7 @@ body {
 }
 
 header {
-  background: var(--blue);
+  background: var(--django-green);
   color: white;
   border-bottom: 5px solid var(--maize);
 }
@@ -106,6 +107,22 @@ p { margin: 0 0 1rem; }
   background: #eef4f8;
   outline: 3px solid rgba(255, 203, 5, 0.55);
   outline-offset: 2px;
+}
+
+.actions a.inline-link {
+  display: inline;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-weight: inherit;
+  text-decoration: underline;
+}
+
+.actions a.inline-link:hover,
+.actions a.inline-link:focus-visible {
+  background: none;
+  outline: none;
 }
 
 .note {

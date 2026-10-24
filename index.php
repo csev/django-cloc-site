@@ -49,15 +49,17 @@
     <p>Hi, I’m Dr. Chuck. I built this non-credit, online section of my course for people who like the flexibility of online learning but do not want to feel completely on their own. You can work from anywhere, follow the course calendar, and get help from the instructional team while the University of Michigan campus course is running.</p>
 
     <ul class="actions" aria-label="Course links">
-      <li>Registration for Fall 2026 is now Closed</li>
+      <li><strong>Registration for Fall 2026 CLOC-357 is now closed. The next Campus-Linked Open Course is CLOC-502 (Python for Everybody with AI) will start January 1st. Please visit <a class="inline-link" href="https://python.dr-chuck.com/" target="_blank" rel="noopener noreferrer">python.dr-chuck.com</a> for more information.</strong></li>
 <!--
       <li><a href="https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django" target="_blank" rel="noopener noreferrer">Register for the course (registration closes October 1st)</a></li>
 -->
-      <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article on the CLOC</a></li>
+      <li><a href="https://www.linkedin.com/pulse/campus-linked-open-course-charles-severance-hjccc/" target="_blank" rel="noopener noreferrer">Read the LinkedIn article about the CLOC model</a></li>
+      <li><a href="https://python.dr-chuck.com/" target="_blank" rel="noopener noreferrer">Explore CLOC-502 - Python for Everybody with AI</a></li>
+
       <li><a href="https://www.youtube.com/watch?v=vaEBaRATTt8&amp;list=PLQqtpRlfsBek&amp;index=2" target="_blank" rel="noopener noreferrer">Watch the YouTube video about the CLOC</a></li>
       <li><a href="https://www.youtube.com/watch?v=0lUAYNDl-mM&amp;list=PLQqtpRlfsBek&amp;index=1" target="_blank" rel="noopener noreferrer">Watch the first week welcome video</a></li>
-      <li><a href="https://si-ali.catalog.instructure.com/dashboard/in-progress" target="_blank" rel="noopener noreferrer">Enrolled Students: Course Dashboard</a></li>
-      <li><a href="about.html">About this Course</a></li>
+      <li><a href="https://si-ali.catalog.instructure.com/dashboard/in-progress" target="_blank" rel="noopener noreferrer">CLOC-357 Enrolled Students: Course Dashboard</a></li>
+      <li><a href="about.html">More detail about CLOC-357</a></li>
     </ul>
 
     <p>This is a practical Django course with readings, videos, exercises, assignments, weekly communication, and live help. There are no university grades or credit, and you can keep working after the campus semester ends. The idea is simple: give online learners more rhythm, more connection, and a better chance to keep moving.</p>
