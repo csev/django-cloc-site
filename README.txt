@@ -3,7 +3,8 @@ DJANGO CLOC MINI-SITE
 Files:
   index.php        Main one-page site (includes UTM tracking)
   about.html       Short explanation of the CLOC model
-  utm-live.php     UTM tracker + live results page
+  utm-live.php     UTM tracker, link click counts, and the live results page
+  register.php     Counts a tracked link click, then redirects to its destination
   utm.sqlite       SQLite data file (created automatically on first UTM hit)
   styles.css       Layout and styling
   script.js        Click-to-open image modal
@@ -22,11 +23,26 @@ UTM TRACKING
 
   Storage columns: utm_string, count, first_use, last_use (UTC).
   Cap: 250 distinct UTM strings. Extra rows are deleted by oldest last_use.
+  Visits with no UTM are stored as (none) and are never pruned.
+
+  Link clicks are counted separately, then the browser is redirected.
+    Register (hidden on the home page): register.php?to=register
+      https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django
+    CLOC-502 from the home page:        register.php?to=next
+      https://python.dr-chuck.com/
+    CLOC-502 from the about page:       register.php?to=next-about
+      https://python.dr-chuck.com/
+    Financial aid (about):              register.php?to=finaid
+      https://forms.gle/uVtEWywveacTEUz96
+  Any other to= value redirects home and is not counted.
+  The live page lists each link. A count is a click, not a completed enrollment or aid application.
 
 IMPORTANT LINK CHECK
-On both pages:
-  Register:
+On the home page:
+  Register (currently commented out), via register.php?to=register:
     https://si-ali.catalog.instructure.com/courses/building-web-applications-in-django
+  CLOC-502, via register.php?to=next:
+    https://python.dr-chuck.com/
   Course dashboard:
     https://si-ali.catalog.instructure.com/dashboard/in-progress
 
@@ -39,7 +55,9 @@ On both pages:
     https://www.youtube.com/watch?v=0lUAYNDl-mM&list=PLQqtpRlfsBek&index=1
 
 On about.html only:
-  Financial aid:
+  CLOC-502, via register.php?to=next-about:
+    https://python.dr-chuck.com/
+  Financial aid, via register.php?to=finaid:
     https://forms.gle/uVtEWywveacTEUz96
   Master Programmer Curriculum:
     https://www.masterprogrammer.com
